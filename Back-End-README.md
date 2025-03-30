@@ -1,115 +1,88 @@
-# Amazon Scraper - Backend
+# Amazon Scraper - Back-end
 
-Bem-vindo ao projeto **Amazon Scraper**! Este projeto permite buscar produtos da Amazon com base em palavras-chave. Ele utiliza **Node.js**, **Express**, **Axios** e **JSDOM** para fazer scraping da Amazon e retornar informações sobre os produtos.
+Este é o back-end do projeto **Amazon Scraper**, responsável por fazer o scraping dos produtos da Amazon com base na palavra-chave fornecida pelo usuário. O back-end é desenvolvido em **Node.js** utilizando a biblioteca **Axios** para realizar as requisições HTTP e **Cheerio** para manipulação do HTML.
 
-## Tecnologias Usadas
+## Funcionalidades
 
-- **Node.js**: Para rodar o servidor.
-- **Express**: Framework para criar o servidor e as rotas.
-- **Axios**: Para fazer requisições HTTP e buscar os dados da Amazon.
-- **JSDOM**: Para parsear e manipular o HTML da página da Amazon.
-- **CORS**: Para permitir que o frontend acesse o backend.
+- Recebe uma palavra-chave via API.
+- Realiza o scraping da Amazon e retorna os produtos relacionados à palavra-chave.
+- Fornece os detalhes dos produtos como título, avaliação, número de avaliações e imagem.
 
-### Como Rodar o Backend
+## Tecnologias Utilizadas
 
-#### 1. Clonar o Repositório
+- **Node.js**: Ambiente de execução JavaScript.
+- **Axios**: Biblioteca para fazer requisições HTTP.
+- **Cheerio**: Biblioteca para análise e manipulação de HTML (usada para fazer o scraping da Amazon).
+- **Express.js**: Framework para criação de servidores HTTP.
+- **Cors**: Middleware para permitir requisições entre diferentes origens (CORS).
 
-Primeiro, clone o repositório do projeto na sua máquina local:
+## Pré-requisitos
 
-```bash
-git clone https://github.com/DevCarlosMoura/amazon-scraper.git
-cd amazon-scraper-backend
+Antes de começar, você precisará ter o **Node.js** e o **npm** instalados. Caso ainda não tenha, você pode instalá-los em [nodejs.org](https://nodejs.org/).
 
-####2. Instalar as Dependências
-Dentro da pasta do projeto, execute o comando abaixo para instalar as dependências necessárias:
+## Como Rodar o Back-end Localmente
+
+1. Clone o repositório:
+
+   ```bash
+   git clone https://github.com/DevCarlosMoura/amazon-scraper.git
+2. Acesse a pasta do back-end:
+cd amazon-scraper/amazon-scraper-backend
+
+3.Instale as dependências:
 npm install
 
-3. Rodar o Servidor
-Após a instalação das dependências, você pode rodar o servidor localmente com o comando:
+4.Inicie o servidor:
 npm start
-Ou, se você estiver usando o nodemon (recomendado para desenvolvimento), pode usar:
-npm run dev
-Isso iniciará o servidor na URL http://localhost:3000.
+O servidor estará disponível em http://localhost:3000.
 
 ###Como Funciona
-O servidor é um simples API REST com uma rota para buscar produtos. Aqui está a explicação do fluxo de trabalho:
+O back-end utiliza a rota /api/scrape para processar as requisições de busca de produtos. Quando um usuário envia uma palavra-chave através do front-end, o back-end faz o scraping da Amazon, busca os produtos relacionados e retorna as informações de cada produto.
 
-1.O front-end chama a rota /api/scrape, passando um parâmetro de consulta chamado keyword (palavra-chave do produto que deseja buscar na Amazon).
-2.O backend usa Axios para fazer uma requisição HTTP para a Amazon com a palavra-chave fornecida.
-3.A resposta HTML da Amazon é processada com JSDOM para extrair informações dos produtos listados.
-4.O backend retorna essas informações para o front-end em formato JSON, que inclui o título do produto, avaliação, número de avaliações e a imagem do produto.
+###Endpoint da API
+URL: http://localhost:3000/api/scrape?keyword={keyword}
 
-## Exemplo de Requisição
-GET http://localhost:3000/api/scrape?keyword=smartphone
-A resposta será algo como:
+Método: GET
+
+Parâmetro:
+
+keyword: A palavra-chave para pesquisar os produtos na Amazon.
+
+Exemplo de resposta:
 {
   "products": [
     {
-      "title": "Smartphone XYZ",
-      "rating": "4.5 out of 5 stars",
-      "reviews": "1000 reviews",
-      "image": "http://linkdaimagem.com/imagem.jpg"
+      "title": "Product Title",
+      "rating": "4.5",
+      "reviews": "1000",
+      "image": "https://linktoimage.com",
+      "description": "Product description here"
     },
-    {
-      "title": "Smartphone ABC",
-      "rating": "4.2 out of 5 stars",
-      "reviews": "500 reviews",
-      "image": "http://linkdaimagem.com/imagem.jpg"
-    }
+    // mais produtos
   ]
 }
 
-**Rota de Erro**
-Se não encontrar produtos ou se ocorrer algum erro durante a requisição, o backend retornará um erro no formato:
-{
-  "error": "No products found for this keyword"
-}
-Ou se ocorrer um erro no servidor, será retornado:
-{
-  "error": "Failed to scrape Amazon"
-}
+###Estrutura de Arquivos
+.server.js: Arquivo principal onde o servidor Express está configurado e as rotas são definidas.
 
-Bloco de Citação
-Este projeto foi criado como um estudo de caso para aprender mais sobre scraping.
+.scraper.js: Contém a lógica para fazer o scraping da Amazon utilizando Axios e Cheerio.
 
-______________________________________________________________________________________________
-Tabela de Comandos
-______________________________________________________________________________________________
-Comando	Descrição
-----------------------------------------------------------------------------------------------
-npm install	Instala as dependências
-----------------------------------------------------------------------------------------------
-npm start	Inicia o servidor
-----------------------------------------------------------------------------------------------
-npm run dev	Inicia o servidor com nodemon para desenvolvimento
-______________________________________________________________________________________________
+.package.json: Arquivo de configuração do npm com as dependências do projeto.
 
-Possíveis Melhorias
+###Personalização
+Se você deseja personalizar o projeto, pode modificar os seguintes arquivos:
 
-.Melhorar a Resiliência: Implementar retries em caso de falha de conexão ou erros temporários na Amazon.
-.Armazenar Dados em Banco de Dados: Em vez de buscar os produtos toda vez que o usuário fizer uma pesquisa, podemos armazenar as informações em um banco de dados para otimizar a performance.
-.Limitar Resultados: Implementar uma limitação de produtos retornados para evitar sobrecarga de dados.
+.scraper.js: Ajuste a lógica de scraping se necessário. Lembre-se de que scraping de sites pode ser instável dependendo das alterações no layout da página da Amazon.
+.server.js: Modifique a configuração do servidor Express ou adicione mais rotas conforme necessário.
 
-**Erro Comum**
-Erro 404 - Nenhum Produto Encontrado
-Caso você receba o seguinte erro no frontend:
+###Contribuições
+Contribuições são bem-vindas! Caso queira melhorar este projeto, siga as etapas abaixo:
 
-{
-  "error": "No products found for this keyword"
-}
+1.Faça um fork deste repositório.
 
-Isso significa que não encontramos produtos para a palavra-chave fornecida. Tente outra palavra-chave ou verifique a conexão com o servidor.
+2.Crie uma branch para a sua modificação (git checkout -b feature/nome-da-feature).
 
-Contribuindo
-Se você deseja contribuir para o projeto, siga os seguintes passos:
+3.Faça as modificações e envie um pull request.
 
-Fork o repositório.
-
-Crie uma nova branch para a feature ou correção que deseja implementar.
-
-Faça as alterações e crie um Pull Request com as modificações.
-
-Após revisão, suas contribuições serão mescladas ao repositório principal.
-
-Licença
-Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+##Licença
+Este projeto está sob a licença MIT - veja o arquivo LICENSE para mais detalhes.
