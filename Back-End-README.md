@@ -44,9 +44,7 @@ URL: http://localhost:3000/api/scrape?keyword={keyword}
 
 Método: GET
 
-Parâmetro:
-
-keyword: A palavra-chave para pesquisar os produtos na Amazon.
+Keyword: A palavra-chave para pesquisar os produtos na Amazon.
 
 Exemplo de resposta:
 {
