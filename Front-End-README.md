@@ -40,15 +40,15 @@ VITE v6.2.3  ready in 244 ms
 ➜  Network: use --host to expose
 Abra o navegador e acesse o link http://localhost:5173.
 
-##Como Funciona
+## Como Funciona
 O front-end se conecta ao back-end em Node.js (que deve estar rodando em http://localhost:3000). Ao realizar uma busca, o front-end envia a palavra-chave para o back-end, que retorna os produtos da Amazon relacionados. Esses produtos são então exibidos na interface.
 
-###Endpoint da API
+### Endpoint da API
 URL: http://localhost:3000/api/scrape?keyword={keyword}
 
 O front-end envia uma requisição GET para este endpoint passando o parâmetro keyword, que é a palavra-chave que o usuário deseja pesquisar.
 
-###Estrutura de Arquivos
+### Estrutura de Arquivos
 index.html: Arquivo principal da página, onde a estrutura do HTML é definida.
 
 style.css: Arquivo CSS responsável pela estilização da página.
