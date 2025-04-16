@@ -55,14 +55,14 @@ style.css: Arquivo CSS responsável pela estilização da página.
 
 main.js: Arquivo JavaScript que contém a lógica para buscar os produtos e exibi-los na página.
 
-####Personalização
+#### Personalização
 Se você deseja personalizar o projeto, você pode modificar os seguintes arquivos:
 
 style.css: Altere o estilo da página para adequá-la ao seu gosto.
 
 main.js: Modifique a lógica de busca ou como os produtos são exibidos na tela.
 
-####Contribuições
+#### Contribuições
 Contribuições são bem-vindas! Caso queira melhorar este projeto, siga as etapas abaixo:
 
 Faça um fork deste repositório.
@@ -71,7 +71,7 @@ Crie uma branch para a sua modificação (git checkout -b feature/nome-da-featur
 
 Faça as modificações e envie um pull request.
 
-###Licença
+### Licença
 Este projeto está sob a licença MIT - veja o arquivo LICENSE para mais detalhes.
 
 markdown
