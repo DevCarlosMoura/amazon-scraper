@@ -36,10 +36,10 @@ npm install
 npm start
 O servidor estará disponível em http://localhost:3000.
 
-###Como Funciona
+### Como Funciona
 O back-end utiliza a rota /api/scrape para processar as requisições de busca de produtos. Quando um usuário envia uma palavra-chave através do front-end, o back-end faz o scraping da Amazon, busca os produtos relacionados e retorna as informações de cada produto.
 
-###Endpoint da API
+### Endpoint da API
 URL: http://localhost:3000/api/scrape?keyword={keyword}
 
 Método: GET
@@ -62,20 +62,20 @@ Exemplo de resposta:
   ]
 }
 
-###Estrutura de Arquivos
+### Estrutura de Arquivos
 .server.js: Arquivo principal onde o servidor Express está configurado e as rotas são definidas.
 
 .scraper.js: Contém a lógica para fazer o scraping da Amazon utilizando Axios e Cheerio.
 
 .package.json: Arquivo de configuração do npm com as dependências do projeto.
 
-###Personalização
+### Personalização
 Se você deseja personalizar o projeto, pode modificar os seguintes arquivos:
 
 .scraper.js: Ajuste a lógica de scraping se necessário. Lembre-se de que scraping de sites pode ser instável dependendo das alterações no layout da página da Amazon.
 .server.js: Modifique a configuração do servidor Express ou adicione mais rotas conforme necessário.
 
-###Contribuições
+### Contribuições
 Contribuições são bem-vindas! Caso queira melhorar este projeto, siga as etapas abaixo:
 
 1.Faça um fork deste repositório.
@@ -84,5 +84,5 @@ Contribuições são bem-vindas! Caso queira melhorar este projeto, siga as etap
 
 3.Faça as modificações e envie um pull request.
 
-##Licença
+## Licença
 Este projeto está sob a licença MIT - veja o arquivo LICENSE para mais detalhes.
